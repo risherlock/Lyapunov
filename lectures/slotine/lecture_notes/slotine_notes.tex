@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[margin=0.8in]{geometry}
+
+\setlength{\parskip}{5pt}
+
+\title{Applied Nonlinear Control}
+\author{Jean-Jacquues Slotine\\Weiping Li}
+\date{March 6, 2023}
+
+\begin{document}
+\maketitle
+Last compiled: \today
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\subsection*{Why nonlinear control?}
+Most dynamical systems that we deal with (from from the practical point of view) are nonlinear in nature i.e. differential of difference equations governing those systems are nonlinear. For instance if we come across nonlinear systems when we write the dynamics of multi-link manipulator robot which determines the state of robot as function of torques applied to the joints, or the Lagrange equations with sines and cosines and squares of velocities. Out of robotics, there are many chemical and biological systems of interests that are fundamentally nonlinear and are gaining explosion of research interests.
+
+If the dynamical system is not highly nonlinear (whatever that may mean), linear approximation proves to be good approach. Linear approaches helps us utilize the well established linear control analysis tools and methods. For instance, Airplanes, until recently, has been designed based on linear analysis tools. However for the systems showing highly nonlinear response, the linear approximation does not work. In such cases, to achieve precise control, we must deal with nonlinearity and use nonlinear control design methods. 
+
+\subsection*{Simple nonlinear system}
+
+To be familiar with the notion of linear and nonlinear dynamics, let us observe some basic examples of each of them and how the notion of linearity and nonlinearity manifest itself in the response of dynamical system.
+
+
+\section{Basic Lyapunov Theory}
+\subsection{Autonomous and non-autonomous systems}
+\subsection{Equilibrium}
+\subsection{Concepts of stability}
+
+\section{Lyapunov Stability Analysis}
+\subsection{Linearization and local stability}
+\subsection{Lyapunov's linearization `method'}
+\subsection{Lyapunov's direct method}
+\subsection{Lyapunov function candidates}
+\subsubsection{Lyapunov's analysis of LTI systems}
+\subsubsection{Krasovskii's method}
+\subsubsection{The variable gradient method}
+\subsubsection{Physically motivated lyapunov functions}
+\subsection{Performance analysis}
+\subsection{Control design based on Lyapunov's direct method}
+
+\section{Convergence of Invariant Sets}
+\subsection{Invariant set theorem}
+\subsection{Global invariant set theorem}
+\subsection{Local invariant set theorem}
+
+\section{Stability of Time-Varying Systems}
+\subsection{Challenges}
+\subsubsection{Lyapunov's direct method for non-autonomous system}
+\subsubsection{Lyapunov analysis of linear time-varying systems}
+\subsection{Lyapunov-like analysis using Barbalat's Lemma}
+\subsubsection{Asymptotic properties of functiona and their derivatives}
+\subsubsection{Barbalat's Lemma}
+
+\section{Sliding Variables}
+\section{Robust Control}
+\section{Adaptive Control}
+\section{Robust Adaptive Control}
+\section{Adaptive Robust Control}
+\section{Feedback Linearization}
+\section{Basic Differential Geometry Tools}
+\section{Controllability, Integrability, Backstepping}
+\section{Introduction to Contraction Analysis}
+\section{Basic Results in Contraction Analysis}
+\section{Combinations of Contracting Systems}
+\section{Virtual Systems}
+\section{Synchronization}
+\section{Stable Invariant Subspaces, Polyrhythms}
+\section{How Synchronization Protects from Noise}
+
+\appendix
+\section{Matrix algebra}
+
+\end{document}

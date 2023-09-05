@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amssymb, amsmath, bm}
+\setlength{\parskip}{5pt}
+
+\title{Nonlinear Control:\\A Charming \& Adventurous Voyage}
+\author{Alberto Isidori}
+\date{October 1, 2017}
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+This talk is an eyewitness' report of a lifelong voyage into uncharted territories. It will be of autobiographical history and  we will talk about discoveries, new encounters, and also setbacks as it happens when we travel into uncharted territories. This tale will cover about half a century from 1970 or so until today (2017). My apologies if this tale is over simplified and biased by my personal vision. I have divided this talk into nine small sections and let me begin with \textit{the early days} of nonlinear control.
+
+\section{The early days}
+\subsection*{A viewpoint in the early 1960's}
+I did not know where to start, so I look at a book which I had in my hands when I was a graduate student. This is a book by professor Gibson  from Prudue University published in 1963. It's entitled \textit{Nonlinear Automatic Control} which I found to be a very promising title and I got interested at it. Here is a excerpt from the preface of the book:
+
+``There are \textit{no general methods} for the \textit{analysis} and \textit{synthesis} of nonlinear control systems. In fact, it is only a trick of semantic that causes one to assume that there is any unity at all in the field... We are dealing with a class that, as the name implies is perhaps best defined in a \textit{negative way}: nonlinear systems are all those systems that are all those systems that are not linear''
+
+The second claim is indeed legitimate and I subscribe to it but the first claim is not totally true because as long as the \textit{analysis} is concerned, in the early 60s the theory was well developed since a long time. I would like to call two great names in the analysis of nonlinear systems; Aleksandr Lyapunov who studied stability of nonlinear systems and Henri Poincare who studied celestial dynamics and introduced the concept of dynamical systems and studied more that stability by studying orbits, motions, and so on. They were more or less contemporary.
+
+With this lecture I with to show how, in this adventurous voyage (that by the way has not ended yet) general methodes of \textit{synthesis} have been discovered over the time.
+
+\subsection*{Nonlinear control in 1950's and early 1960's}
+Let me speak a little bit about nonlinear control in the 50s and early 60s just to compare with what we have today. Control theory as suc, and I would like to stress the word theory, emerged as a discipline in the light in the late forties and probably everybody knows that the first textbook was this book by James, Nicholson, and Phillips and this was from MIT radiation laboratory series which was published in 1948. I am proud to observe that the book bears the title \textit{Theory of Servomechanisms} not for instance \textit{Practice in Servomechanisms}.  Control theory, emerged as a discipline in the late 1940's, underwent a sharp transition in the early 1960's. The catalyzer for such transition was the first IFAC Congress in Moscow in 1960. The introduction of the ]textit{state-space} approach, with the associated concepts of controllability, observability, and the pursuit of optimality, in control as well as in estimation, provoked what was called a transition from \textit{classical} control to \textit{modern} control.
+
+These were time at which I was completing my master studies and I vividly remember the emotion with which my Professor was introducing to us what he saw as far reaching new ideas.
+
+A few years later, a more silent, but equally revolutionary transition occurred. This was the transition from \textit{classical nonlinear} control to \textit{modern nonlinear} control.
+
+\noindent
+\textbf{What was classical nonlinear control about?}
+Classical nonlinear control dealt with essentially finite dimensional linear system looped with memoryless nonlinearity. It was a linear system and there was a nonlinear gain. This is an important problem because these problems arises when there are saturation in the actuator and even backlash or dead zones. So it was very important to study this kind of system and in particular the stability of such system.
+
+The study classical nonlinear control was mostly due to an enormous wealt of results, mostly in the Russian literature:
+\begin{enumerate}
+    \item Ceta'v, 1930
+    \item Lur'e, 1944; \textit{On the theory of stability of control systems}
+    \item Aizerman, 1947; \textit{The investigation of the stability of automatic control systems with several non-linear elements}
+    \item Malkin, 1951; \textit{On the theory of stability of control systems}
+    \item Pliss, 1958; \textit{Certain Problems in the Theory of Stability of Motion in the Whole}
+    \item Popov, 1961; \textit{Absolute Stability of Nonlinear Systems of Automatic}
+    \item Yakubovich, 1962; \textit{The solution of certain matrix inequalities in automatic control theory}
+\end{enumerate}
+
+They were published in the famous journal \textit{Automatika i Telemekhanika}. Probably the most known of all the works are the paper by Popov titled \textit{Absolute Stability of Nonlinear Systems of Automatic} (1961). It says nonlinear system but it was the above mentioned type of nonlinear systems with memoryless nonlinearity.
+
+\noindent
+\textbf{What was modern nonlinear control about?}
+Modern control dealt with different type of nonlinearity and not just memoryless but dynamic nonlinearities. For instance, the kinematics of a rigid body is relation between angular velocities $\bm{\omega}=[\omega_{1}, \omega_{2}, \omega_{3}]^{\intercal}$ and the orientation $\bm{R}$ of the of rigid body.
+
+\begin{equation*}
+    \dot{\bm{R}}=
+    \begin{bmatrix}
+        0&-\omega_{3}&\omega_{2}\\
+        \omega_{3}&0&-\omega_{1}\\
+        -\omega_{2}&\omega_{1}&0
+    \end{bmatrix}
+    \bm{R}
+\end{equation*}
+
+$$
+\bm{R}\in SO(3)=\{\bm{R}\in\mathbb{R}^{3\times3}:\bm{R}\bm{R}^{\intercal}:\bm{R}\bm{R}^{\intercal}=\bm{I}\in\mathbb{\bm{R}}^{3\times3},\,\text{det}(\bm{R})=1\}
+$$
+
+$\bm{R}$ is a orthogonal rotation matrix with determinant one which defines the orientation of a rigid body.
+
+These kinds of theories were developed in early 60s because these were the time when the first communication satellites were launched. Design of control for such system requires totally new ideas. This is a nonlinear dynamical system and not just a memoryless nonlinearity added to linear system. The natural state space is no longer a vector space. In this example of rotation it is the group of matrices characterizing a rotation, also called $SO(3)$. he analysis based on the local approximation via a linear system no longer suffices.
+
+\section{Understanding the internal structure}
+To motivate how nonlinear control developed, let me mention the results that were being known in late 60s and early 70s about the multivariable linear systems. These results because paradigm for the development of the theory of nonlinear systems.
+
+\subsection*{Modern linear control theory and modern nonlinear control}
+Modern linear control theory is based on the concepts of controllability, observability and minimality. I like to see the development in timelines because that helps to add proper context to this historical review.
+
+The man who developed pretty much all of the linear theories was Kalman. There was flurry of developments in the nonlinear theories too and the major authors were Hector Susman, Roger Brockett, and Arthur Krener. They are three most important contributors to this field of study of nonlinear controllability and observability. 
+
+Then the linear control of especially multivariable systems was developed using methods that are known as geometric methods. There are certain papers appearing in 70s and 80s and big names there are Walter Murray Wonham and A. Stephen Morse. At the end of 70s times were mature for flurry of papers dealing with control of multivariable nonlinear system using appropriate geometric approach. What is the substance of this geometric approach? Geometric approach, for linear as well as nonlinear, is used to understand the \textit{internal structure} of the system.
+
+\subsubsection*{1960-1962: The \textit{internal structure} of a linear system is unveiled}
+\textit{Geometry} is the appropriate tool. If you have a linear system
+\begin{equation*}
+    \begin{split}
+        \dot{\bm{x}}&=\bm{A}\bm{x}+\bm{B}\bm{u}\\
+        \bm{y}&=\bm{C}\bm{x}\\        
+    \end{split}
+\end{equation*}
+
+then the problem of controllability is studied by geometric methods in following way. The \textit{set} $\mathcal{P}$ os states reachable from $\bm{x}=\bm{0}$ is the smallest \textit{subspace} which is invariant under $\bm{A}$ and contains the image of $\bm{B}$.
+\begin{enumerate}
+    \item $\bm{A}\mathcal{P}\subset\mathcal{P}$
+    \item Im$(\bm{B})\subset\mathcal{P}$
+\end{enumerate}
+
+With this one can characterize the set of initial states. This is the basis for the famous decomposition into controllable and uncontrollable parts of  a system. Likewise, in studying relation between the states and output, it turns out that the set $\mathcal{Q}$ of states that are unobservable from the output is the largest subspace that is invariant under $\bm{A}$ and is contained in the kernel of $\bm{C}$.
+\begin{enumerate}
+    \item $\bm{A}\mathcal{Q}\subset\mathcal{P}$
+    \item $\mathcal{Q}\subset\textnormal{ker}(\bm{C})$
+\end{enumerate}
+
+This geometric approach was the method to develop the decomposition of system into  observable and unobservable. One part has no influence on the output and the other part receives no influence from the input altogether.
+
+This leads us to famous decomposition into four pieces that was developed by Kalman in 1962 paper \textit{Mathematical Description of Linear Dynamical System} (1962); controllable and observable, controllable but not observable, observable but not controllable, and not controllable and not observable. This led to the understanding how a system can be built from a transfer function. If one has a transfer function and does a certain expansion for coefficients; probably power series expansion. It turns out that the finite dimensional minimal realization exists if and only if the Hankel matrix of coefficients has finite range. This realization vis Hankel matrices shows clean unity in all the field.
+$$
+\bm{H}=
+\begin{bmatrix}
+    T_{0}&T_{1}&T_{2}&.\,.\,.\\
+    T_{1}&T_{2}&T_{3}&.\,.\,.\\
+    T_{2}&T_{2}&T_{4}&.\,.\,.\\
+    \vdots&\vdots&\vdots&\ddots\\
+\end{bmatrix}
+\quad\quad T_{i}=\bm{C}\bm{A}^{i}\bm{B}
+$$
+
+Let us see how this was followed in the nonlinear field. There is a 1938 paper by Chow in German which translates to \textit{Over a system of linear partial differential equations of first order.} He studied the controllability of the nonlinear systems and this is acknowledged to be the precursor of a nonlinear control. This paper was discovered by Robert Hermann who studied what he called the accessibility problem. Accessibility is synonym for the term controllability. A number of papers appeared different authors in that time who were trying to duplicate the result of Kalman for nonlinear system.
+
+\begin{enumerate}
+    \item Chow - \textit{Uber systeme von linearen partiellen differentialgleichungen ester ordnung} (1938)
+    \item Hermann - \textit{On the accessibility problem in control theory} (1963)
+    \item Haynes, Hermes - \textit{Nonlinear controllability via Lie theory} (1968)
+    \item Lobry - \textit{Controlabilite des systems nonlineaires} (1968)
+    \item Sussmann, Jurdjevic - \textit{Controllability of nonlinear systems} (1971)
+    \item Brockett - \textit{System theory on group manifolds and coset spaces} (1971)
+    \item Sussmann - \textit{Orbits of families of vector fields distributions} (1972)
+    \item Krener - \textit{A generalization of Chow's theorem} (1972)
+    \item Hermann, Krener - \textit{Nonlinear controllability and observability} (1976)
+\end{enumerate}
+
+Sussmann's work was eventually used to to understand decomposition. Krener (1972) developed a very nice methd to understand the structure of the reachable set for a nonlinear system. All these series of works was concluded by Hermann and Krener in 1976 which I consider to be a milestone paper for the reason which we will discover later.
+
+\noindent
+\subsubsection*{Differential geometry is the appropriate tool}
+We mentioned above that geometry is right tool to unveil the internal structure of linear system. For nonlinear system, \textit{differential geometry} has turned out to be appropriate tool.
+
+Let us begin our discussion with, according to Roger Brockett, \textit{``The calculation that everybody must have done at least once in his/her lifetime''}. Suppose we have a system with two inputs $\bm{u}$ and $\bm{v}$ two vector fields $\bm{f}(\bm{x})$ and $\bm{g}(\bm{x})$. 
+
+Suppose we evolve the dynamical system from certain initial condition $\bm{x}_{o}$. We will evolve the system with alternate control commands $\bm{u}$ and $\bm{v}$ i.e. we go $T$ seconds forward in time with application of $\bm{u}$, then $T$ units forward in time with application of $\bm{v}$. In these cases, the system evolves along the direction of $\bm{f}(\bm{x})$ and $\bm{g}(\bm{x})$ respectively. Now let us do something interesting and try going $T$ seconds backward in time with consecutive application of $\bm{u}$ and $\bm{v}$. In mathematics this trick of \textit{backward in time} is allowed because there is no privilege sense of time in differential equations. In general, considering nonlinear systems, we do not end up at the same point where we started from. The end point could be close to the but not not quite coincident with the starting point.
+
+How far is the final point from the starting point? The direction is that of the \textit{Lie bracket} of $\bm{f}(\bm{x})$ and $\bm{g}(\bm{x})$ i.e. $[\bm{f}(\bm{x}),\,\bm{g}(\bm{x})]$. Mathematically we can represent it as following.
+$$
+\bm{x}(t)=\bm{x}(0)+[\bm{f}(\bm{x}),\,\bm{g}(\bm{x})]t^{2}+...
+$$
+
+If you expand the value of state $\bm{x}$ as the function of time, you have summation of initial state with higher order terms. The magnitude and direction of second order term in $t$ leads us to the final state. This is the first significant contribution what we can get from differential geometry in analyzing nonlinear controllability; how state propagate with time.
+
+
+
+\section{Shaping the internal structure}
+\section{Normal forms and zero dynamics}
+\section{Feedback stabilization}
+\section{State estimation}
+\section{Input-to-State stability}
+\section{Steady-state behavior}
+\section{The present days}
+
+\end{document}
