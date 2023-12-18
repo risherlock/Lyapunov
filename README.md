@@ -7,4 +7,4 @@ This repository contains lecture notes, solved problems, and simulation software
 
 ## Software
 1. [Fantoni, Lozano - The reaction wheel Pendulum (2002)](software/rw_pendulum)
-2. [Luukkonen - Modelling and control of quadcoptor (2002)](software/quadcoptor)
+2. [Luukkonen - Modelling and control of quadcoptor (2011)](software/quadcoptor)

@@ -1,6 +1,5 @@
 % Numerical simulation of quadrotor dynamics with open loop control
-% Reference: Modelling and control of quadcoptor (2011) by Teppo Luukkonen
-% Rishav (2023-07-26)
+% 2023-07-26
 
 clc
 clear
@@ -14,15 +13,15 @@ stop_time = 2;
 time = 0:dt:stop_time;
 
 % Physical params
-g = 9.81;         % Gravity's acceleration, m/(s*s)
-m = 0.468;        % Mass, kg
-l = 0.225;        % Rotor to COM distance, m
-k = 2.980e-6;     % Lift coefficient
-b = 1.140e-7;     % Drag constant
-Im = 3.357e-5;    % MOI of rotor, kg*m*m
-Ixx = 4.856e-3;   % Quadrotor MOI about X-axis, kg*m*m
-Iyy = 4.856e-3;   % Quadrotor MOI about Y-axis, kg*m*m
-Izz = 8.801e-3;   % Quadrotor MOI about Z-axis, kg*m*m
+g = 9.81;       % Gravity's acceleration, m/(s*s)
+m = 0.468;      % Mass, kg
+l = 0.225;      % Rotor to COM distance, m
+k = 2.980e-6;   % Lift coefficient
+b = 1.140e-7;   % Drag constant
+Im = 3.357e-5;  % MOI of rotor, kg*m*m
+Ixx = 4.856e-3; % Quadrotor MOI about X-axis, kg*m*m
+Iyy = 4.856e-3; % Quadrotor MOI about Y-axis, kg*m*m
+Izz = 8.801e-3; % Quadrotor MOI about Z-axis, kg*m*m
 
 % Aerodynamic drag coefficients
 Ax = 0.25; % kg/s
@@ -30,13 +29,13 @@ Ay = 0.25; % kg/s
 Az = 0.25; % kg/s
 
 phy_params = [g, m, l, k, b, Im, Ixx, Iyy, Izz];
-aero_params = [Ax, Ay, Az];
+A = [Ax, Ay, Az];
 
 % Initial conditions
-xi = [0, 0, 0];
-xi_dot = [0, 0, 0];
-eta = [0, 0, 0];
-eta_dot = [0, 0, 0];
+xi = [0, 0, 0];      % m
+xi_dot = [0, 0, 0];  % m/s
+eta = [0, 0, 0];     % rad
+eta_dot = [0, 0, 0]; % rad/s
 
 % Rotor command profile params
 t1s = 0;
@@ -84,8 +83,8 @@ state(:,1) = [xi, xi_dot, eta, eta_dot]';
 
 % Numerical integration
 for t = 1:length(time)-1
-  fn = @(y)quadcoptor(y, phy_params, aero_params, w(:,t));
-  state(:,t+1) = RK4(fn, state(:,t), dt);
+  fn = @(y)quadcoptor(y, phy_params, A, w(:,t));
+  state(:,t+1) = rk4(fn, state(:,t), dt);
 end
 
 % Control input
